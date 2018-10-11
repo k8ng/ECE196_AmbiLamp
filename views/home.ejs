@@ -2,8 +2,20 @@
 
 <% include ./partials/header %>
 
-<h1 class='ui header'>I am home</h1>
+<script type='text/javascript' src='js/jscolor.js'></script>
+
+<form class='ui form' action='/set-color' method='post' id='color-form'>
+  <input type='text' class='jscolor two wide field' name='color' value='<%= settings.lightColor %>'>
+
+  <input type='checkbox' name='options[setAsDefault]' id='set-as-default' hidden>
+  <input type='checkbox' name='options[changeToDefault]' id='change-to-default' hidden>
+  <input type='checkbox' name='options[turnOff]' id='turn-off' hidden>
+
+  <div class='ui submit button' id='change-color' onclick='submitSettings()'>Change Color</div>
+  <div class='ui submit button' id='set-default-button' onclick='submitSettings(true,false,false)'>Set As Default</div>
+  <div class='ui submit button' onclick='submitSettings(false,true,false)'>Change To Default</div>
+  <div class='ui submit button' id='off-button' onclick='submitSettings(false,false,true)'>Turn Off</div>
+</form>
 
 <script type='text/javascript' src='js/home.js'></script>
-
 <% include ./partials/foot %>
