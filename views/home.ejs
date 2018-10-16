@@ -4,6 +4,8 @@
 
 <script type='text/javascript' src='js/jscolor.js'></script>
 
+
+<!-- COLOR FORM -->
 <form class='ui form' action='/set-color' method='post' id='color-form'>
   <input type='text' class='jscolor two wide field' name='color' value='<%= settings.lightColor %>'>
 
@@ -19,6 +21,58 @@
 
 <br>
 
+<!-- DASHBOARD -->
+<div class='ui segment'> 
+	<h2 class='ui header centered'>Analytics Dashboard</h2>
+
+	<div class='ui three small grey statistics'>
+		<div class='statistic'>
+			<div class='value'>
+				30 &degC
+			</div>
+			<div class='label'>
+				Avg Temperature
+			</div>
+		</div>
+		<div class='statistic'>
+			<div class='value'>
+				60%
+			</div>
+			<div class='label'>
+				Avg Humidity
+			</div>
+		</div>
+		<div class='statistic'>
+			<div class='value'>
+				416/1023
+			</div>
+			<div class='label'>
+				Avg Brightness
+			</div>
+		</div>
+	</div> <!-- END STATS -->
+
+	<div class='ui grid>'>
+		<div class='three column row'>
+			<div class='column'>
+				<canvas id='temperature-chart' height ='50'></canvas>
+				<h4 class='ui centered header'>Temperature Zones</h4>
+			</div>
+
+			<div class='column'>
+				<canvas id='humidity-chart' height ='50'></canvas>
+				<h4 class='ui centered header'>Humidity Zones</h4>
+			</div>
+
+			<div class='column'>
+				<canvas id='on-chart' height ='50'></canvas>
+				<h4 class='ui centered header'>Time On</h4>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- CONFIGURATION FORM -->
 <h3 class='ui header centered'>Configuration</h3>
 
 <form class='ui form' action='/set-config' method='post' id='config-form'>

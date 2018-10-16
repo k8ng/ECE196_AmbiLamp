@@ -28,3 +28,46 @@ function submitSettings(setDefault=false, useDefault=false, turnOff=false) {
 function configure() {
   document.getElementById('config-form').submit();
 }
+
+var data = {
+    datasets: [{
+        data: [10, 20, 30],
+        backgroundColor: ['#123412', '#99ff99', '#111111']
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+};
+
+var ctx = document.getElementById('temperature-chart');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+      legend: {
+        display: false,
+      }
+    }
+});var hCtx = document.getElementById('humidity-chart');
+var myDoughnutChart = new Chart(hCtx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+      legend: {
+        display: false,
+      }
+    }
+});var onCtx = document.getElementById('on-chart');
+var myDoughnutChart = new Chart(onCtx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+      legend: {
+        display: false,
+      }
+    }
+});
