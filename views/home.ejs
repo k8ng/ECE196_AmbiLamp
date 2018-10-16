@@ -17,5 +17,35 @@
   <div class='ui submit button' id='off-button' onclick='submitSettings(false,false,true)'>Turn Off</div>
 </form>
 
+<form class='ui form' action='/set-config' method='post' id='config-form'>
+	<div class='inline fields'>
+		<div class='field' id='set-hot'>
+			<label>Hot (&degC)</label>
+			<input type='text' name='hot'>
+		</div>
+		<div class='field' id='set-cold'>
+			<label>Cold (&degC)</label>
+			<input type='text' name='cold'>
+		</div>
+		<div class='field' id='set-humid'>
+			<label>Humid (%)</label>
+			<input type='text' name='humid'>
+		</div>
+		<div class='field' id='set-dry'>
+			<label>Dry (%)</label>
+			<input type='text' name='dry'>
+		</div>
+		<div class='field' id='set-dark'>
+			<label>Dark</label>
+			<input type='text' name='dark'>
+		</div>
+		<div class='field' id='submit-button'>
+			<div class='ui submit button' onclick='configure()'>Submit
+			</div>
+		</div>
+		
+	</div>
+</form>
+
 <script type='text/javascript' src='js/home.js'></script>
 <% include ./partials/foot %>
