@@ -25,23 +25,23 @@
 	<div class='inline fields'>
 		<div class='field' id='set-hot'>
 			<label>Hot (&degC)</label>
-			<input type='text' name='hot'>
+			<input type='text' name='config[hot]' value='<%= settings.hot %>'>
 		</div>
 		<div class='field' id='set-cold'>
 			<label>Cold (&degC)</label>
-			<input type='text' name='cold'>
+			<input type='text' name='config[cold]' value='<%= settings.cold %>'>
 		</div>
 		<div class='field' id='set-humid'>
 			<label>Humid (%)</label>
-			<input type='text' name='humid'>
+			<input type='text' name='config[humid]' value='<%= settings.humid %>'>
 		</div>
 		<div class='field' id='set-dry'>
 			<label>Dry (%)</label>
-			<input type='text' name='dry'>
+			<input type='text' name='config[dry]' value='<%= settings.dry %>'>
 		</div>
 		<div class='field' id='set-dark'>
 			<label>Dark</label>
-			<input type='text' name='dark'>
+			<input type='text' name='config[dark]' value='<%= settings.dark %>'>
 		</div>
 		<div class='field' id='submit-button'>
 			<div class='ui submit button' onclick='configure()'>Submit

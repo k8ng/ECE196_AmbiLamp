@@ -46,5 +46,37 @@ router.post('/set-color', (req,res) => {
   });
 });
 
+router.post('/set-config', (req,res) => {
+  db.Settings.findOne({})
+  .then( function(result) {
+    var settings = { }
+
+    if (req.body.config.hot) {
+      settings['hot'] = req.body.config.hot;
+    }
+    if (req.body.config.cold) {
+      settings['cold'] = req.body.config.cold;
+    }
+    if (req.body.config.humid) {
+      settings['humid'] = req.body.config.humid;
+    }
+    if (req.body.config.dry) {
+      settings['dry'] = req.body.config.dry;
+    }
+    if (req.body.config.dark) {
+      settings['dark'] = req.body.config.dark;
+    }
+
+    return db.Settings.findOneAndUpdate({}, settings, {'new': true, upsert: true})
+  })
+  .then( function(edited) {
+    console.log(edited);
+    res.redirect('/');
+  })
+  .catch( function(err) {
+    res.send(err);
+  });
+});
+
 // let app.js use this
 module.exports = router;

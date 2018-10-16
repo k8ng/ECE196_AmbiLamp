@@ -24,3 +24,7 @@ function submitSettings(setDefault=false, useDefault=false, turnOff=false) {
 
   document.getElementById('color-form').submit();
 }
+
+function configure() {
+  document.getElementById('config-form').submit();
+}
