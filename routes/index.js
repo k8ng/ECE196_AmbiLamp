@@ -4,9 +4,35 @@ var express = require('express'),
   router = express.Router();
 
 router.get('/', (req, res) => {
+
+  var setting;
+
   db.Settings.findOne({})
   .then( function(result) {
-    res.render('home', {settings: result});
+    setting = result;
+    return db.Stats.findOne({})
+  })
+  .then( function(statResult) {
+
+    var timeInHot = statResult.timeInHot/statResult.timeTotal;
+    var timeInCold = statResult.timeInCold/statResult.timeTotal;
+    var timeInHumid = statResult.timeInHumid/statResult.timeTotal;
+    var timeInDry = statResult.timeInDry/statResult.timeTotal;
+    var timeOn = statResult.timeOn/statResult.timeTotal;
+
+    var stats = {
+      avgTemperature: statResult.avgTemperature,
+      avgHumidity: statResult.avgHumidity,
+      avgBrightness: statResult.avgBrightness,
+      temperatureData:  [timeInHot, 1-timeInHot-timeInCold, timeInCold],
+      humidityData:  [timeInHumid, 1-timeInHumid-timeInDry, timeInDry],
+      onData: [timeOn, 1-timeOn]
+    };
+
+    res.render('home', {settings: setting, stats: stats});
+  })
+  .catch( function(err) {
+    res.send(err);
   })
 });
 
@@ -76,6 +102,29 @@ router.post('/set-config', (req,res) => {
   .catch( function(err) {
     res.send(err);
   });
+});
+
+router.get('/seed-stats',(req,res) => {
+  var seed = {
+    avgTemperature: 32,
+    avgHumidity: 11,
+    avgBrightness: 721,
+    timeInHot: 20,
+    timeInCold: 60,
+    timeInDry: 80,
+    timeInHumid: 8,
+    timeOn: 59,
+    timeTotal: 100
+  }
+
+  db.Stats.findOneAndUpdate({}, seed, {'new': true, upsert: true})
+  .then( function(stats) {
+    console.log(stats);
+    res.redirect('/');
+  })
+  .catch( function(err) {
+    res.send(err);
+  })
 });
 
 // let app.js use this

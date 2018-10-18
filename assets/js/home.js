@@ -1,4 +1,5 @@
 setActivePage('nav_home');
+document.getElementById('stats-generator').click();
 
 // gray out set defauly and off button if light is off
 if (document.querySelector('.jscolor').value == '000000') {
@@ -25,47 +26,49 @@ function submitSettings(setDefault=false, useDefault=false, turnOff=false) {
   document.getElementById('color-form').submit();
 }
 
-var data = {
+function renderChart(ctx, data) {
+  var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+}
+
+function analyse(temperatureData, humidityData, onData) {
+  var temperatureRenderData = {
     datasets: [{
-        data: [10, 20, 30],
-        backgroundColor: ['#123412', '#99ff99', '#111111']
+      data: temperatureData,
+      backgroundColor: ['#13763f', '#54a06b', '#b3d264']
     }],
 
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        'Red',
-        'Yellow',
-        'Blue'
-    ]
-};
+    labels: ['Hot', 'Comfortable', 'Cold']
+  };
 
-var ctx = document.getElementById('temperature-chart');
-var myTemperatureChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: data,
-    options: {
-      legend: {
-        display: false,
-      }
-    }
-});
+  var humidityRenderData = {
+    datasets: [{
+      data: humidityData,
+      backgroundColor: ['#13763f', '#54a06b', '#b3d264']
+    }],
 
-var hCtx = document.getElementById('humidity-chart');
-var myHumidityChart = new Chart(hCtx, {
-    type: 'doughnut',
-    data: data,
-    options: {
-      legend: {
-        display: false,
-      }
-    }
-});var onCtx = document.getElementById('on-chart');
-var myOnChart = new Chart(onCtx, {
-    type: 'doughnut',
-    data: data,
-    options: {
-      legend: {
-        display: false,
-      }
-    }
-});
+    labels: ['Humid', 'Comfortable', 'Dry']
+  };
+
+  var onRenderData = {
+    datasets: [{
+      data: onData,
+      backgroundColor: ['#13763f', '#54a06b']
+    }],
+
+    labels: ['On','Off']
+  };
+  
+  console.log(humidityData);
+
+  renderChart(document.getElementById('temperature-chart'), temperatureRenderData);
+  renderChart(document.getElementById('humidity-chart'), humidityRenderData);
+  renderChart(document.getElementById('on-chart'), onRenderData);
+}

@@ -4,7 +4,7 @@
 
 <script type='text/javascript' src='js/jscolor.js'></script>
 
-
+<a id='stats-generator' onclick='analyse([<%= stats.temperatureData %>], [<%= stats.humidityData %>], [<%= stats.onData %>])' hidden></a>
 <!-- COLOR FORM -->
 <form class='ui form' action='/set-color' method='post' id='color-form'>
   <input type='text' class='jscolor two wide field' name='color' value='<%= settings.lightColor %>'>
@@ -28,7 +28,7 @@
 	<div class='ui three small grey statistics'>
 		<div class='statistic'>
 			<div class='value'>
-				30 &degC
+				<%= stats.avgTemperature %> &degC
 			</div>
 			<div class='label'>
 				Avg Temperature
@@ -37,7 +37,7 @@
 
 		<div class='statistic'>
 			<div class='value'>
-				60%
+				<%= stats.avgHumidity %> %
 			</div>
 			<div class='label'>
 				Avg Humidity
@@ -46,7 +46,7 @@
 
 		<div class='statistic'>
 			<div class='value'>
-				416/1023
+				<%= stats.avgBrightness %> / 1023
 			</div>
 			<div class='label'>
 				Avg Brightness
