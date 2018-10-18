@@ -25,10 +25,6 @@ function submitSettings(setDefault=false, useDefault=false, turnOff=false) {
   document.getElementById('color-form').submit();
 }
 
-function configure() {
-  document.getElementById('config-form').submit();
-}
-
 var data = {
     datasets: [{
         data: [10, 20, 30],
@@ -44,7 +40,7 @@ var data = {
 };
 
 var ctx = document.getElementById('temperature-chart');
-var myDoughnutChart = new Chart(ctx, {
+var myTemperatureChart = new Chart(ctx, {
     type: 'doughnut',
     data: data,
     options: {
@@ -52,8 +48,10 @@ var myDoughnutChart = new Chart(ctx, {
         display: false,
       }
     }
-});var hCtx = document.getElementById('humidity-chart');
-var myDoughnutChart = new Chart(hCtx, {
+});
+
+var hCtx = document.getElementById('humidity-chart');
+var myHumidityChart = new Chart(hCtx, {
     type: 'doughnut',
     data: data,
     options: {
@@ -62,7 +60,7 @@ var myDoughnutChart = new Chart(hCtx, {
       }
     }
 });var onCtx = document.getElementById('on-chart');
-var myDoughnutChart = new Chart(onCtx, {
+var myOnChart = new Chart(onCtx, {
     type: 'doughnut',
     data: data,
     options: {
