@@ -32,3 +32,11 @@ table {
   max-height: 400px;
   overflow-y: scroll;
 }
+
+canvas {
+  width: 100%;
+}
+
+.my.statistics, .my.grid, .my.segment {
+  margin-top: 25px !important;
+}

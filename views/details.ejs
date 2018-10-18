@@ -4,7 +4,7 @@
 
 
 
-<div class='ui three small grey statistics'>
+<div class='my ui three small grey statistics'>
   <div class='statistic'>
     <div class='value'>
       KK &degC
@@ -33,17 +33,17 @@
   </div>
 </div>
 
-<div class='ui segment'>
+<div class='my ui segment'>
   <div class='ui tabular menu'>
-    <a class='item active' onclick='showLineChart(this)'>
+    <a id='first-chart' class='item active' onclick='showLineChart(this, [10,20,30,40,50])'>
       Temperature
     </a>
   
-    <a class='item' onclick='showLineChart(this)'>
+    <a class='item' onclick='showLineChart(this, [10,20,0,40,50])'>
       Humidity
     </a>
 
-    <a class='item' onclick='showLineChart(this)'>
+    <a class='item' onclick='showLineChart(this, [10,50,10,0,50])'>
       Brightness
     </a>
   </div>
@@ -52,7 +52,7 @@
   <canvas></canvas>
 </div>
 
-<div class='ui grid'>
+<div class='my ui grid'>
   <div class='my seven wide column'>
     <h3 class='table label bg-blue'>History</h3>
     <div class='table wrapper'>
