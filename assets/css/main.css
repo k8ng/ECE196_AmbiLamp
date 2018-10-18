@@ -5,3 +5,30 @@
 .jscolor, .my.centered {
   text-align: center;
 }
+
+.my.column {
+  margin: auto;
+}
+
+.bg-blue {
+  background-color: #17363f !important;
+  color: white !important;
+}
+
+.table.label {
+  text-align: center;
+  height: 40px;
+  margin: 0 auto;
+  line-height: 40px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+table {
+  margin-top: 0 !important;
+}
+
+.table.wrapper {
+  max-height: 400px;
+  overflow-y: scroll;
+}

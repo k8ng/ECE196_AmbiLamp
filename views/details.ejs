@@ -3,11 +3,103 @@
 <% include ./partials/header %>
 
 
+
+<div class='ui three small grey statistics'>
+  <div class='statistic'>
+    <div class='value'>
+      KK &degC
+    </div>
+    <div class='label'>
+      Avg Temperature
+    </div>
+  </div>
+
+  <div class='statistic'>
+    <div class='value'>
+      KK %
+    </div>
+    <div class='label'>
+      Avg Humidity
+    </div>
+  </div>
+
+  <div class='statistic'>
+    <div class='value'>
+      KK / 1023
+    </div>
+    <div class='label'>
+      Avg Brightness
+    </div>
+  </div>
+</div>
+
+<div class='ui segment'>
+  <div class='ui tabular menu'>
+    <a class='item active' onclick='showLineChart(this)'>
+      Temperature
+    </a>
+  
+    <a class='item' onclick='showLineChart(this)'>
+      Humidity
+    </a>
+
+    <a class='item' onclick='showLineChart(this)'>
+      Brightness
+    </a>
+  </div>
+
+  <!-- CHART CANVAS -->
+  <canvas></canvas>
+</div>
+
+<div class='ui grid'>
+  <div class='my seven wide column'>
+    <h3 class='table label bg-blue'>History</h3>
+    <div class='table wrapper'>
+      <table class='ui table'>
+        <thead>
+          <th>Timestamp</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Brightness</th>
+        </thead>
+        
+        <tr>
+          <td>123</td>
+          <td>40</td>
+          <td>32</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>40</td>
+          <td>32</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>40</td>
+          <td>32</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>40</td>
+          <td>32</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>123</td>
+          <td>40</td>
+          <td>32</td>
+          <td>100</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
 <script type='text/javascript' src='js/details.js'></script>
-
-<h1>I am details</h1>
-
-
 
 <% include ./partials/foot %>
 
