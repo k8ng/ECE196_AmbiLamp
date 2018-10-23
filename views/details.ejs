@@ -2,19 +2,21 @@
 
 <% include ./partials/header %>
 
+<a id='convert-times' onclick='convertTimes([<%= time %>])' hidden></a>
+
 <div class='my ui three small grey statistics'>
   <div class='statistic'>
     <div class='value'>
-      KK &degC
+      <%= Math.min(...temperature) %> - <%= Math.max(...temperature) %> &degC
     </div>
     <div class='label'>
-      Avg Temperature
+      Temperature
     </div>
   </div>
 
   <div class='statistic'>
     <div class='value'>
-      KK %
+      <%= Math.min(...humidity) %> - <%= Math.max(...humidity) %> %
     </div>
     <div class='label'>
       Avg Humidity
@@ -23,7 +25,7 @@
 
   <div class='statistic'>
     <div class='value'>
-      KK / 1023
+      <%= Math.min(...brightness) %> - <%= Math.max(...brightness) %> / 1023
     </div>
     <div class='label'>
       Avg Brightness
@@ -64,10 +66,10 @@
         
         <% data.forEach( function(reading, i) { %>
           <tr>
-            <td><%= reading.timestamp %></td>
-            <td><%= reading.temperature %></td>
-            <td><%= reading.humidity %></td>
-            <td><%= reading.brightness %></td>
+            <td class='date'></td>
+            <td><%= temperature[i] %></td>
+            <td><%= humidity[i] %></td>
+            <td><%= brightness[i] %></td>
           </tr>
         <% }) %>
       </table>

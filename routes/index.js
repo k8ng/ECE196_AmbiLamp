@@ -45,7 +45,7 @@ router.get('/details', (req, res) => {
     var brightnesses = [];
     
     dataCursor.forEach( function(reading) {
-      times.push(reading.timestamp);
+      times.push("'" + reading.timestamp + "'");
       temperatures.push(reading.temperature);
       humidities.push(reading.humidity);
       brightnesses.push(reading.brightness);

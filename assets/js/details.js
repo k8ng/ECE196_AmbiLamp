@@ -1,5 +1,19 @@
+var labels = [];
 setActivePage('nav_details');
+document.getElementById('convert-times').click();
 document.getElementById('first-chart').click();
+
+tableRows = document.querySelectorAll('.date');
+tableRows.forEach(function(row, i) {
+  row.innerHTML = labels[i];
+});
+
+function convertTimes(times_data) {
+  for (i = 0; i < times_data.length; i++) {
+    var date = new Date(times_data[i]);
+    labels[i] = date.toLocaleString();
+  }
+}
 
 function showLineChart(elem, data) {
   var oldCtx = document.querySelector('canvas');
@@ -23,11 +37,16 @@ function renderChart(ctx,data) {
       datasets: [{
         data: data
       }],
-      labels: ['1','2','3','4','5']
+      labels: labels 
   }
 
   var myLineChart = new Chart(ctx, {
       type: 'line',
-      data: data
+      data: data,
+      options: {
+        legend: {
+          display: false
+        }
+      }
   });
 }
