@@ -2,8 +2,6 @@
 
 <% include ./partials/header %>
 
-
-
 <div class='my ui three small grey statistics'>
   <div class='statistic'>
     <div class='value'>
@@ -35,15 +33,15 @@
 
 <div class='my ui segment'>
   <div class='ui tabular menu'>
-    <a id='first-chart' class='item active' onclick='showLineChart(this, [10,20,30,40,50])'>
+    <a id='first-chart' class='item active' onclick='showLineChart(this, [<%= temperature %>])'>
       Temperature
     </a>
   
-    <a class='item' onclick='showLineChart(this, [10,20,0,40,50])'>
+    <a class='item' onclick='showLineChart(this, [<%= humidity %>])'>
       Humidity
     </a>
 
-    <a class='item' onclick='showLineChart(this, [10,50,10,0,50])'>
+    <a class='item' onclick='showLineChart(this, [<%= brightness %>])'>
       Brightness
     </a>
   </div>
@@ -64,36 +62,14 @@
           <th>Brightness</th>
         </thead>
         
-        <tr>
-          <td>123</td>
-          <td>40</td>
-          <td>32</td>
-          <td>100</td>
-        </tr>
-        <tr>
-          <td>123</td>
-          <td>40</td>
-          <td>32</td>
-          <td>100</td>
-        </tr>
-        <tr>
-          <td>123</td>
-          <td>40</td>
-          <td>32</td>
-          <td>100</td>
-        </tr>
-        <tr>
-          <td>123</td>
-          <td>40</td>
-          <td>32</td>
-          <td>100</td>
-        </tr>
-        <tr>
-          <td>123</td>
-          <td>40</td>
-          <td>32</td>
-          <td>100</td>
-        </tr>
+        <% data.forEach( function(reading, i) { %>
+          <tr>
+            <td><%= reading.timestamp %></td>
+            <td><%= reading.temperature %></td>
+            <td><%= reading.humidity %></td>
+            <td><%= reading.brightness %></td>
+          </tr>
+        <% }) %>
       </table>
     </div>
   </div>
