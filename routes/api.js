@@ -13,7 +13,7 @@ var express = require('express'),
 * D elete
 *****/
 
-.route('/data')
+router.route('/data')
 	.get(dataHelpers.getData)
 	.post(dataHelpers.createData)
 	.delete(dataHelpers.deleteData);
@@ -25,12 +25,12 @@ router.route('/data/:id')
 	.delete(dataHelpers.deleteData);
 
 router.route('/settings')
-	.get()
-	.put();
+	.get(settingsHelpers.getSettings)
+	.put(settingsHelpers.editSettings);
 
 router.route('/stats')
-	.get()
-	.put()
-	.delete();
+	.get(statsHelpers.getStats)
+	.put(statsHelpers.editStats)
+	.delete(statsHelpers.resetStats);
 
 module.exports = router;

@@ -54,7 +54,7 @@ exports.editData = function(req, res) {
 exports.deleteOneData = function(req, res) {
 	db.Data.remove( {_id: req.params.id})
 	.then (function() {
-		res.json( [ message: 'Successfully deleted']);
+		res.json({message: 'Successfully deleted'});
 	})
 	.catch (function (err) {
 		res.send(err);
